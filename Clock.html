@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .clock {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 3rem;
+            text-align: center;
+            border: 2px solid #333;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .digit {
+            display: inline-block;
+            animation: clockAnimation 1s infinite;
+        }
+
+        @keyframes clockAnimation {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+    <title>Animated CSS Clock</title>
+</head>
+
+<body>
+    <center>
+        <h1>Digital Clock</h1>
+        <div class="clock">
+            <div class="digit">
+                <span class="hour">00</span> :
+                <span class="minute">00</span> :
+                <span class="second">00</span>
+            </div>
+        </div>
+    </center>
+    <script>
+        function updateClock() {
+            const currentTime = new Date();
+
+            const hours = currentTime.getHours().toString().padStart(2, '0');
+            const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+            const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+
+            const hourSpan = document.querySelector('.hour');
+            const minuteSpan = document.querySelector('.minute');
+            const secondSpan = document.querySelector('.second');
+
+            hourSpan.textContent = hours;
+            minuteSpan.textContent = minutes;
+            secondSpan.textContent = seconds;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+    </script>
+</body>
+
+</html>
